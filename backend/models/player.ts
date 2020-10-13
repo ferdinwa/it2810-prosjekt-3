@@ -1,18 +1,14 @@
-//const mongoose1 = require('mongoose');
+import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 //Create Schema
 const PlayerSchema = new Schema({
-    first_name: {
-        type: String,
-        required: true
-    },
-    last_name: {
+    name: {
         type: String,
         required: true
     },
     birth_date: {
-        type: String
+        type: String,
     },
     age: {
         type: String
