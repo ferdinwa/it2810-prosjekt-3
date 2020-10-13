@@ -6,8 +6,8 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
-    "server": "nodemon server.js"
+    "start": "node server.ts",
+    "server": "nodemon server.ts"
   },
   "repository": {
     "type": "git",
