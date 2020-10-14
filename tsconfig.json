@@ -5,7 +5,8 @@
      "pretty": true,
      "target": "es6",
      "outDir": "./dist",
-     "baseUrl": "./backend"
+     "baseUrl": "./backend",
+     "esModuleInterop": true
   },
   "include": [
      "backend/**/*.ts"
