@@ -2,14 +2,13 @@
   "name": "prosjekt-3",
   "version": "1.0.0",
   "description": "",
-  "main": "server.ts",
+  "main": "../dist/server.js",
   "type": "module",
   "scripts": {
-    "client-install": "npm install --prefix client",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.ts",
-    "server": "nodemon server.ts",
-    "client": "npm start --prefix client",
+    "test": "ts-node .backend/server.ts",
+    "start": "tsc && nodemon ../dist/server.js",
+    "server": "tsc && nodemon ../dist/server.js",
+    "client": "cd .. && cd client && npm start",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "repository": {
