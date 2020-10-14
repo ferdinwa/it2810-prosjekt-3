@@ -1,4 +1,4 @@
-import React, {Component, useState} from 'react'
+import React, {useState} from 'react'
 import {
     Collapse,
     Navbar,
@@ -10,7 +10,7 @@ import {
     Container
   } from 'reactstrap';
 
-    export default function AppNavbar(props: any) {
+    export default function AppNavbar() {
         const [isOpen, setIsOpen] = useState(false)
 
         const toggle = () => {
@@ -25,13 +25,13 @@ import {
             
             <Navbar color="dark" dark expand="sm" className="mb-5">
                 <Container>
-                    <NavbarBrand href="/">Shoppinglist</NavbarBrand>
+                    <NavbarBrand href="/">FutWeb</NavbarBrand>
                     <NavbarToggler onClick={toggle}/>
                     <Collapse isOpen={isOpen} navbar>
                         <Nav className="ml-auto" navbar>
                             <NavItem>
-                                <NavLink href="https://github.com/ferdinwa">
-                                    Github
+                                <NavLink href="https://www.youtube.com/watch?v=ZJHUn8cV13w">
+                                    Maren blir overrasket
                                 </NavLink>
                             </NavItem>
                         </Nav>
