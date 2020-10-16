@@ -3,14 +3,7 @@ import {IAppState, IAction} from '../interfaces'
 
 
 const initialState = {
-    players: [
-        {id: "1", name: 'Pelé'}, 
-        {id: "2", name: 'Maradona'},
-        {id: "3", name: 'Ronald0'},
-        {id: "4", name: 'Tor Hogne Aa(røy)'},
-        {id: "5", name: 'Dovlandović'}, 
-        {id: "6", name: 'Ferdinandinho'},
-    ],
+    players: [],
     loading: false
 }
 
@@ -24,7 +17,9 @@ export default function playerReducer(
     switch (action.type) {
         case GET_PLAYERS:
             return {
-                ...state
+                ...state,
+                players: action.payload,
+                loading: false
             }
         case PLAYERS_LOADING:
             return {
