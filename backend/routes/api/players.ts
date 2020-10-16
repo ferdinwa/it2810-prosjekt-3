@@ -9,7 +9,7 @@ const Player = require('../../models/player')
 // @access Public
 router.get('/', (req: Request, res: Response) => {
     Player.find()
-    .sort({ age: -1 })
+//   .sort({ age: -1 })
     .then((players : any) => res.json(players))
 });
 
