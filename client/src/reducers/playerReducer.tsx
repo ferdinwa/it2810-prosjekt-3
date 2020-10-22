@@ -1,7 +1,6 @@
 import {GET_PLAYERS, PLAYERS_LOADING} from '../actions/types'
 import {IAppState, IAction} from '../interfaces'
 
-
 const initialState = {
     players: [],
     loading: false
