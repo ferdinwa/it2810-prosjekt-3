@@ -7,9 +7,8 @@ const Player = require('../../models/player')
 // @route GET api/players
 // @desc GET all items
 // @access Public
-router.get('/', (req: Request, res: Response) => {
-    Player.find()
-//   .sort({ age: -1 })
+router.get('/', (_req: Request, res: Response, {searchSequence}: any) => {
+    Player.find({name: {"$regex": searchSequence, "$options": "i" }})
     .then((players : any) => res.json(players))
 });
 
@@ -33,3 +32,4 @@ router.delete('/:id', (req: Request, res: Response) => {
 })
 
 module.exports = router;
+

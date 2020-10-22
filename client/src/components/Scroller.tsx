@@ -61,7 +61,7 @@ const Scroller = ({getPlayers, player}: IScroller) => {
 
 
 const mapStateToProps = (state: IPlayerReduxProps) => ({
-    player: state.player
+   player: state.player
 })
 
 export default connect(mapStateToProps, { getPlayers })(Scroller)

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Jumbotron, Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import {connect} from 'react-redux'
+import { setQuery } from '../actions/queryActions';
+import { IQueryReduxProps, ISearchBar } from '../interfaces'
 
 //interface SearchBarProps {
   //handleSubmit(e: React.FormEvent<HTMLFormElement>): void
@@ -14,8 +16,8 @@ const SearchBar = () => {
   }
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    alert('A name was submitted: ' + name )
     e.preventDefault()
+    setQuery(name)
   } 
   
     return (
@@ -36,4 +38,10 @@ const SearchBar = () => {
   );
 };
 
+/*const mapStateToProps = (state: IQueryReduxProps) => ({
+  query: state.query
+})*/
+
 export default SearchBar
+
+

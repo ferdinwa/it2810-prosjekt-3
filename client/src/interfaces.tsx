@@ -1,5 +1,3 @@
-
-
 export interface IPlayer {
     id: string;
     name: string
@@ -16,10 +14,15 @@ export interface IPlayerReduxProps {
     }
 }
 
+export interface IQueryReduxProps {
+    query: string
+}
+
 
 export interface IAction {
     type: string
     payload?: any
+    new?: any
 }
 
 export interface IScroller {
@@ -29,7 +32,17 @@ export interface IScroller {
     getPlayers(): void
 }
 
+export interface ISearchBar {
+    setQuery(query: string): void
+}
+
 export interface IAppState {
-    players: IPlayer[]
-    loading: boolean
+    players: {
+        players: IPlayer[]
+        loading: boolean
+}
+    query: {
+        query: string
+    }
+    
 }

@@ -1,10 +1,8 @@
 import {GET_PLAYERS, PLAYERS_LOADING} from '../actions/types'
 import {IAppState, IAction} from '../interfaces'
+import initialState from '../store/initialState'
 
-const initialState = {
-    players: [],
-    loading: false
-}
+
 
 //type Actions = 
 //| ReturnType<typeof AddPlayer> | ReturnType<typeof RemovePlayer>

@@ -10,9 +10,8 @@ const Player = require('../../models/player');
 // @route GET api/players
 // @desc GET all items
 // @access Public
-router.get('/', (req, res) => {
-    Player.find()
-        //   .sort({ age: -1 })
+router.get('/', (_req, res, { searchSequence }) => {
+    Player.find({ name: { "$regex": searchSequence, "$options": "i" } })
         .then((players) => res.json(players));
 });
 // @route POST api/players
@@ -20,7 +19,7 @@ router.get('/', (req, res) => {
 // @access Public
 router.post('/', (req, res) => {
     const newPlayer = new Player({
-        name: req.body.name
+        name: req.body.name,
     });
     newPlayer.save().then(player => res.json(player));
 });
