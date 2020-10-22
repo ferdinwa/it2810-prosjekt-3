@@ -18,7 +18,7 @@ router.get('/', (req: Request, res: Response) => {
 // @access Public
 router.post('/', (req: Request, res: Response) => {
     const newPlayer = new Player({
-        name: req.body.name
+        name: req.body.name,
     });
     newPlayer.save().then(player => res.json(player))
 });
