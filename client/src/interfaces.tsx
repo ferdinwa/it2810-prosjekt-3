@@ -3,6 +3,11 @@
 export interface IPlayer {
     id: string;
     name: string
+    age: string
+    height: string
+    position: string
+    club: string
+    nation: string
 }
 
 export interface IPlayerReduxProps {
@@ -11,10 +16,6 @@ export interface IPlayerReduxProps {
     }
 }
 
-export interface IPlayer {
-    id: string;
-    name: string
-}
 
 export interface IAction {
     type: string

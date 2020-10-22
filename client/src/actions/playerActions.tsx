@@ -1,9 +1,6 @@
 import axios from 'axios'
 import {GET_PLAYERS, PLAYERS_LOADING } from '../actions/types'
 
-
-
-
 export const getPlayers = () => (dispatch : Function) => {
     dispatch(setPlayersLoading())
     axios
