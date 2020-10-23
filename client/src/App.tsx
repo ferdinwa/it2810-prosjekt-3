@@ -15,7 +15,7 @@ function App() {
     <div className="App">
       <AppNavbar/>
       <SearchBar/>
-      <Scroller/>
+      <Scroller />
     </div>
     </Provider>
 

@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Jumbotron, Button, Form, FormGroup, Label, Input } from 'reactstrap';
-import {connect} from 'react-redux'
+import {connect, useDispatch} from 'react-redux'
 import { setQuery } from '../actions/queryActions';
 import { IQueryReduxProps, ISearchBar } from '../interfaces'
+import { getPlayers } from '../actions/playerActions';
 
 //interface SearchBarProps {
   //handleSubmit(e: React.FormEvent<HTMLFormElement>): void
@@ -10,14 +11,17 @@ import { IQueryReduxProps, ISearchBar } from '../interfaces'
 
 const SearchBar = () => {
   const [name, setName] = useState('')
+  const dispatch = useDispatch();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setName(e.currentTarget.value)
   }
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    console.log("Handled");
+    
     e.preventDefault()
-    setQuery(name)
+    getPlayers(name, dispatch)
   } 
   
     return (
