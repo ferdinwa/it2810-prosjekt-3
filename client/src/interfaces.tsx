@@ -43,6 +43,8 @@ export interface IAppState {
     query: string;
   };
   position: string;
+  nation: string;
+  club: string;
 }
 
 export interface IPositionState {

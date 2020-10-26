@@ -36,11 +36,15 @@ const Scroller = () => {
 
   const players = useSelector((state: IAppState) => state.players);
   const pos = useSelector((state: IAppState) => state.position);
+  const nat = useSelector((state: IAppState) => state.nation);
+  const clu = useSelector((state: IAppState) => state.club);
 
   return (
     <div>
       {players.players
         .filter((posplayer) => posplayer.position === pos || pos === "")
+        .filter((nationplayer) => nationplayer.nation === nat || nat === "")
+        .filter((clubplayer) => clubplayer.club === clu || clu === "")
         .sort((player1, player2) => player2.rating - player1.rating)
         .map(({ ...players }: IPlayer) => (
           <div>

@@ -11,6 +11,8 @@ const initialState: IAppState = {
   },
 
   position: "",
+  nation: "",
+  club: "",
 };
 
 export default initialState;
