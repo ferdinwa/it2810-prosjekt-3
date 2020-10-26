@@ -1,4 +1,4 @@
-import React, {useState } from "react";
+import React, {useState, useEffect, useRef } from "react";
 import {
   Modal,
   ModalHeader,
@@ -12,16 +12,21 @@ import {
   IAppState,
 } from "../interfaces";
 import '../css/scroller.css'
+import {useDispatch} from 'react-redux'
+import { getPlayers } from "../actions/playerActions";
 
 
 const Scroller = () => {
   const [modal, setModal] = useState(false);
-  const [name, setName] = useState();
-  const [age, setAge] = useState();
-  const [position, setPosition] = useState();
-  const [nation, setNation] = useState();
-  const [club, setClub] = useState();
-  const [rating, setRating] = useState();
+  const [name, setName] = useState("");
+  const [age, setAge] = useState("");
+  const [position, setPosition] = useState("");
+  const [nation, setNation] = useState("");
+  const [club, setClub] = useState("");
+  const [rating, setRating] = useState(0);
+  const [limit, setLimit] = useState(5);
+  const [skip, setSkip] = useState(0);
+  const dispatch = useDispatch();
 
   const toggle = (
     playername: string,
@@ -44,7 +49,27 @@ const Scroller = () => {
     setModal(!modal);
   };
 
+  const nextPage = () => {
+    setSkip(skip + limit)
+}
+
+const previousPage = () => {
+    skip === 0 ? setSkip(0) : setSkip(skip - limit)
+}
+
+const isFirstRun = useRef(true);
+useEffect(() => {
+  if(isFirstRun.current) {
+    isFirstRun.current = false;
+    return;
+  }
+  getPlayers(query,dispatch, limit, skip)
+}, [skip, limit])
+
+
   const players = useSelector((state: IAppState) => state.players);
+  const query = useSelector((state: IAppState) => state.query);
+
 
   return (
     <div>
@@ -53,19 +78,34 @@ const Scroller = () => {
                 players.nation, players.club, players.rating)} > {players.name} {players.rating} </Button>
                 </div>       
             )))}
-      }
+
       <Modal isOpen={modal} toggle={toggleModal}>
         <ModalHeader toggle={toggleModal}> {name} </ModalHeader>
         <ModalBody>
-          Alder: {age}
+          Age: {age}
           <br />
-          Posisjon: {position}
+          Position: {position}
           <br />
-          Klubb: {club}
+          Club: {club}
           <br />
-          Nasjon: {nation}
+          Nation: {nation}
         </ModalBody>
       </Modal>
+      {(!isFirstRun.current) && (
+        <div className="buttons">
+        <br/>
+        <Button id={skip === 0 ? "disable" : ""} 
+        className="prevnext" 
+        color="primary" 
+        disabled={skip === 0 ? true : false} 
+        onClick={previousPage}>Previous page</Button>{'  '}
+        <Button id={players.players.length < 5 ? "disable" : ""} 
+        className="prevnext" color="primary" onClick={nextPage}
+        disabled={players.players.length < 5 ? true : false}>Next page</Button>
+        <br/>
+        <br/>
+      </div>
+      )}
     </div>
   );
 };

@@ -11,11 +11,23 @@ const PlayerSchema = new Schema({
         type: String,
         required: true
     },
-    birth_date: {
-        type: String,
-    },
     age: {
         type: String
-    }
+    },
+    height: {
+        type: String
+    },
+    position: {
+        type: String
+    },
+    club: {
+        type: String
+    },
+    nation: {
+        type: String
+    },
+    rating: {
+        type: Number
+    },
 });
 module.exports = mongoose_1.default.model('Player', PlayerSchema);

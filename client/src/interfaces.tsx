@@ -39,7 +39,5 @@ export interface IAppState {
     players: IPlayer[];
     loading: boolean;
   };
-  query: {
     query: string;
-  };
 }
