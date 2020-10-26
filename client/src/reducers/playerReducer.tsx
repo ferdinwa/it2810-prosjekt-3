@@ -1,4 +1,4 @@
-import { GET_PLAYERS, PLAYERS_LOADING } from "../actions/types";
+import { GET_PLAYERS, PLAYERS_LOADING, SET_POSITION } from "../actions/types";
 import { IAppState, IAction } from "../interfaces";
 import initialState from "../store/initialState";
 
@@ -17,6 +17,11 @@ export default function playerReducer(
           players: action.payload,
           loading: false,
         },
+      };
+    case SET_POSITION:
+      return {
+        ...state,
+        position: action.payload,
       };
     case PLAYERS_LOADING:
       return {

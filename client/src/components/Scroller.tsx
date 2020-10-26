@@ -35,10 +35,12 @@ const Scroller = () => {
   };
 
   const players = useSelector((state: IAppState) => state.players);
+  const pos = useSelector((state: IAppState) => state.position);
 
   return (
     <div>
       {players.players
+        .filter((posplayer) => posplayer.position === pos || pos === "")
         .sort((player1, player2) => player2.rating - player1.rating)
         .map(({ ...players }: IPlayer) => (
           <div>
@@ -56,8 +58,7 @@ const Scroller = () => {
                 )
               }
             >
-              {" "}
-              {players.name} {players.rating}{" "}
+              {players.name} {players.rating}
             </Button>
           </div>
         ))}

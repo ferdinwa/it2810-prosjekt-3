@@ -8,7 +8,7 @@ import "../css/searchbar.css";
 
 const Filter = () => {
   return (
-    <div className="container">
+    <div className="filtercontainer">
       <DropdownPosition />
       <DropdownClub />
       <DropdownNation />

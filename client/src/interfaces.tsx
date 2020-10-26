@@ -42,7 +42,18 @@ export interface IAppState {
   query: {
     query: string;
   };
+  position: string;
+}
+
+export interface IPositionState {
   position: {
     position: string;
+  };
+}
+
+export interface IPlayerState {
+  players: {
+    players: IPlayer[];
+    loading: boolean;
   };
 }

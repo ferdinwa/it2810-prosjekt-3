@@ -1,10 +1,7 @@
-import { GET_POSITION, POSITION_LOADING } from "./types";
+import { SET_POSITION, POSITION_LOADING } from "./types";
 
-export const getPosition = (pos: string) => (dispatch: Function) => {
-  dispatch({
-    type: GET_POSITION,
-    payload: pos,
-  });
+export const setPosition = (pos: string) => {
+  return { type: SET_POSITION, payload: pos };
 };
 
 export const setPositionLoading = () => {

@@ -1,8 +1,8 @@
-import { IAppState } from "../interfaces";
+import { IAppState, IPlayer } from "../interfaces";
 
 const initialState: IAppState = {
   players: {
-    players: [],
+    players: new Array<IPlayer>(),
     loading: false,
   },
 
@@ -10,9 +10,7 @@ const initialState: IAppState = {
     query: " ",
   },
 
-  position: {
-    position: "",
-  },
+  position: "",
 };
 
 export default initialState;
