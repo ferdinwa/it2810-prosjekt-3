@@ -1,27 +1,17 @@
-import React, {useState } from "react";
-import {
-  Modal,
-  ModalHeader,
-  ModalBody,
-  Button
-} from "reactstrap";
+import React, { useState } from "react";
+import { Modal, ModalHeader, ModalBody, Button } from "reactstrap";
 import { useSelector } from "react-redux";
-import {
-  IPlayer,
-  IPlayerReduxProps,
-  IAppState,
-} from "../interfaces";
-import '../css/scroller.css'
-
+import { IPlayer, IAppState } from "../interfaces";
+import "../css/scroller.css";
 
 const Scroller = () => {
   const [modal, setModal] = useState(false);
-  const [name, setName] = useState();
-  const [age, setAge] = useState();
-  const [position, setPosition] = useState();
-  const [nation, setNation] = useState();
-  const [club, setClub] = useState();
-  const [rating, setRating] = useState();
+  const [name, setName] = useState("");
+  const [age, setAge] = useState("");
+  const [position, setPosition] = useState("");
+  const [nation, setNation] = useState("");
+  const [club, setClub] = useState("");
+  const [rating, setRating] = useState(0);
 
   const toggle = (
     playername: string,
@@ -29,14 +19,14 @@ const Scroller = () => {
     playerposition: string,
     playernation: string,
     playerclub: string,
-    rating: number,
+    rating: number
   ) => {
     setName(playername);
     setAge(playerage);
     setPosition(playerposition);
     setNation(playernation);
     setClub(playerclub);
-    setRating(rating)
+    setRating(rating);
     setModal(!modal);
   };
 
@@ -48,12 +38,29 @@ const Scroller = () => {
 
   return (
     <div>
-    {players.players.sort((player1, player2)  => player2.rating - player1.rating ).map((({...players} : IPlayer) => (
-                <div><Button className="button" color="secondary" onClick={() => toggle(players.name, players.age, players.position,
-                players.nation, players.club, players.rating)} > {players.name} {players.rating} </Button>
-                </div>       
-            )))}
-      }
+      {players.players
+        .sort((player1, player2) => player2.rating - player1.rating)
+        .map(({ ...players }: IPlayer) => (
+          <div>
+            <Button
+              className="playerbutton"
+              color="secondary"
+              onClick={() =>
+                toggle(
+                  players.name,
+                  players.age,
+                  players.position,
+                  players.nation,
+                  players.club,
+                  players.rating
+                )
+              }
+            >
+              {" "}
+              {players.name} {players.rating}{" "}
+            </Button>
+          </div>
+        ))}
       <Modal isOpen={modal} toggle={toggleModal}>
         <ModalHeader toggle={toggleModal}> {name} </ModalHeader>
         <ModalBody>
@@ -64,6 +71,8 @@ const Scroller = () => {
           Klubb: {club}
           <br />
           Nasjon: {nation}
+          <br />
+          Rating: {rating}
         </ModalBody>
       </Modal>
     </div>

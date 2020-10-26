@@ -42,4 +42,7 @@ export interface IAppState {
   query: {
     query: string;
   };
+  position: {
+    position: string;
+  };
 }

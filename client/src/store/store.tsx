@@ -1,8 +1,7 @@
 import { createStore, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
-import rootReducer from "../reducers";
-import { IAppState } from "../interfaces";
-//import initialState from './initialState'
+import combineReducers from "../reducers";
+import initialState from "./initialState";
 
 declare global {
   interface Window {
@@ -10,22 +9,10 @@ declare global {
   }
 }
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-
-const initialState: IAppState = {
-  players: {
-    players: [],
-    loading: false,
-  },
-  query: {
-    query: "",
-  },
-};
-
 const middleware = [thunk];
 
 const store = createStore(
-  rootReducer,
+  combineReducers,
   initialState,
   compose(
     applyMiddleware(...middleware),

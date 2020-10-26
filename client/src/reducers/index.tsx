@@ -1,9 +1,10 @@
-import {combineReducers} from 'redux'
-import playerReducer from './playerReducer'
-import queryReducer from './queryReducer'
+import { combineReducers } from "redux";
+import playerReducer from "./playerReducer";
+import positionReducer from "./positionReducer";
 
-export default playerReducer;
+export default combineReducers({
+  players: playerReducer,
+  position: positionReducer,
+});
 
-// export default combineReducers({
-//     players: playerReducer,
-// })
+// export default positionReducer;

@@ -1,13 +1,18 @@
-const initialState = {
-    players: {
-        players: [],
-        loading: false,
-    },
-    
-    query: {
-        query: " ", 
-    },
-    
-}
+import { IAppState } from "../interfaces";
 
-export default initialState
+const initialState: IAppState = {
+  players: {
+    players: [],
+    loading: false,
+  },
+
+  query: {
+    query: " ",
+  },
+
+  position: {
+    position: "",
+  },
+};
+
+export default initialState;
