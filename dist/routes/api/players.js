@@ -12,9 +12,11 @@ const Player = require("../../models/player");
 // @access Public
 router.get("/", (_req, res) => {
     let playerName = _req.query.playerName;
+    let skip = _req.query.skip;
+    let limit = _req.query.limit;
     return Player.find({
-        name: { $regex: playerName, $options: "i" },
-    }).then((players) => res.json(players));
+        name: { $regex: playerName, $options: "i" }
+    }).skip(Number(skip)).limit(Number(limit)).then((players) => res.json(players));
 });
 // @route POST api/players
 // @desc Create a Player

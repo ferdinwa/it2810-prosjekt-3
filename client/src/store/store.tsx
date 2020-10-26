@@ -17,9 +17,7 @@ const initialState: IAppState = {
     players: [],
     loading: false,
   },
-  query: {
     query: "",
-  },
 };
 
 const middleware = [thunk];

@@ -1,3 +1,4 @@
+import { CLIENT_RENEG_LIMIT } from "tls";
 import { GET_PLAYERS, PLAYERS_LOADING } from "../actions/types";
 import { IAppState, IAction } from "../interfaces";
 import initialState from "../store/initialState";
@@ -17,6 +18,7 @@ export default function playerReducer(
           players: action.payload,
           loading: false,
         },
+        query: action.new
       };
     case PLAYERS_LOADING:
       return {

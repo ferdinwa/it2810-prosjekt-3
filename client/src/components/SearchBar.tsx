@@ -21,8 +21,11 @@ const SearchBar = () => {
     console.log("Handled");
     
     e.preventDefault()
-    getPlayers(name, dispatch)
+    getPlayers(name, dispatch, 10, 0)
+    setQuery(name)
+
   } 
+
   
     return (
     <div>

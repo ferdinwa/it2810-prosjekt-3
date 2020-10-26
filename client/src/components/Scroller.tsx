@@ -1,4 +1,4 @@
-import React, {useState } from "react";
+import React, {useState, useEffect } from "react";
 import {
   Modal,
   ModalHeader,
@@ -12,16 +12,21 @@ import {
   IAppState,
 } from "../interfaces";
 import '../css/scroller.css'
+import {useDispatch} from 'react-redux'
+import { getPlayers } from "../actions/playerActions";
 
 
 const Scroller = () => {
   const [modal, setModal] = useState(false);
-  const [name, setName] = useState();
-  const [age, setAge] = useState();
-  const [position, setPosition] = useState();
-  const [nation, setNation] = useState();
-  const [club, setClub] = useState();
-  const [rating, setRating] = useState();
+  const [name, setName] = useState("");
+  const [age, setAge] = useState("");
+  const [position, setPosition] = useState("");
+  const [nation, setNation] = useState("");
+  const [club, setClub] = useState("");
+  const [rating, setRating] = useState(0);
+  const [limit, setLimit] = useState(10);
+  const [skip, setSkip] = useState(0);
+  const dispatch = useDispatch();
 
   const toggle = (
     playername: string,
@@ -44,7 +49,22 @@ const Scroller = () => {
     setModal(!modal);
   };
 
+  const nextPage = () => {
+    setSkip(skip + limit)
+}
+
+const previousPage = () => {
+    setSkip(skip - limit)
+}
+
+useEffect(() => {
+  getPlayers(query,dispatch, limit, skip)
+}, [skip, limit])
+
+
   const players = useSelector((state: IAppState) => state.players);
+  const query = useSelector((state: IAppState) => state.query);
+
 
   return (
     <div>
@@ -53,19 +73,26 @@ const Scroller = () => {
                 players.nation, players.club, players.rating)} > {players.name} {players.rating} </Button>
                 </div>       
             )))}
-      }
+
       <Modal isOpen={modal} toggle={toggleModal}>
         <ModalHeader toggle={toggleModal}> {name} </ModalHeader>
         <ModalBody>
-          Alder: {age}
+          Age: {age}
           <br />
-          Posisjon: {position}
+          Position: {position}
           <br />
-          Klubb: {club}
+          Club: {club}
           <br />
-          Nasjon: {nation}
+          Nation: {nation}
         </ModalBody>
       </Modal>
+      <div className="buttons">
+          <br/>
+          <Button className="prevnext" color="primary" onClick={previousPage}>Previous page</Button>{'  '}
+          <Button className="prevnext" color="primary" onClick={nextPage}>Next page</Button>
+          <br/>
+          <br/>
+      </div>
     </div>
   );
 };

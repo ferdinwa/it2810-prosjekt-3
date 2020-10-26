@@ -7,7 +7,7 @@ export default function queryReducer(state: IAppState, action: IAction) {
         case SET_QUERY:
             return {
                 ...state,
-                query: action.new
+                query: action.payload
             }
             default:
                 return state

@@ -3,10 +3,8 @@ const initialState = {
         players: [],
         loading: false,
     },
-    
-    query: {
-        query: " ", 
-    },
+
+    query: "", 
     
 }
 
