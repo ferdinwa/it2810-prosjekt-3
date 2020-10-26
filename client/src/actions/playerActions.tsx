@@ -4,6 +4,8 @@ import { GET_PLAYERS, PLAYERS_LOADING } from "../actions/types";
 
 export const getPlayers = (query: string, dispatch: any, limit: number, skip: number) => {
   console.log("Halla");
+  console.log(`limit: ${limit}`)
+  console.log(`skip: ${skip}`)
 
   dispatch(setPlayersLoading());
   axios.get(`/api/players?playerName=${query}&limit=${limit}&skip=${skip}`).then((res) => {

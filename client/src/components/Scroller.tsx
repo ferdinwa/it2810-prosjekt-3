@@ -54,7 +54,7 @@ const Scroller = () => {
 }
 
 const previousPage = () => {
-    setSkip(skip - limit)
+    skip === 0 ? setSkip(0) : setSkip(skip - limit)
 }
 
 const isFirstRun = useRef(true);
@@ -94,8 +94,14 @@ useEffect(() => {
       {(!isFirstRun.current) && (
         <div className="buttons">
         <br/>
-        <Button className="prevnext" color="primary" onClick={previousPage}>Previous page</Button>{'  '}
-        <Button className="prevnext" color="primary" onClick={nextPage}>Next page</Button>
+        <Button id={skip === 0 ? "disable" : ""} 
+        className="prevnext" 
+        color="primary" 
+        disabled={skip === 0 ? true : false} 
+        onClick={previousPage}>Previous page</Button>{'  '}
+        <Button id={players.players.length < 5 ? "disable" : ""} 
+        className="prevnext" color="primary" onClick={nextPage}
+        disabled={players.players.length < 5 ? true : false}>Next page</Button>
         <br/>
         <br/>
       </div>

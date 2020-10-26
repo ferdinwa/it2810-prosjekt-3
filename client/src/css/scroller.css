@@ -13,3 +13,7 @@
 .buttons {
   margin-left: 20%;
 }
+
+#disable {
+  cursor: not-allowed;
+}
