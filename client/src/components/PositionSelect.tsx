@@ -9,7 +9,7 @@ const DropdownPosition = () => {
 
   const optionPosition = [
     { value: "", label: "All positions" },
-    { value: "GK", label: "Goal Keeper" },
+    { value: "GK", label: "GoalKeeper" },
     { value: "RB", label: "Right Back" },
     { value: "CB", label: "Center Back" },
     { value: "LB", label: "Left Back" },

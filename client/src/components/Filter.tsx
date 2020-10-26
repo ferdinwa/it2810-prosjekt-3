@@ -1,8 +1,8 @@
 import React from "react";
-import DropdownPosition from "./DropdownPosition";
-import DropdownClub from "./DropdownClub";
-import DropdownNation from "./DropdownNation";
-import DropdownAge from "./DropdownAge";
+import DropdownPosition from "./PositionSelect";
+import DropdownClub from "./ClubSelect";
+import DropdownNation from "./NationSelect";
+import DropdownAge from "./AgeSlider";
 
 import "../css/searchbar.css";
 

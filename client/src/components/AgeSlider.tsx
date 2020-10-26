@@ -6,7 +6,7 @@ import {
   DropdownItem,
 } from "reactstrap";
 import "../css/searchbar.css";
-
+import Slider from "react-slider";
 const DropdownAge = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
