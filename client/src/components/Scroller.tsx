@@ -1,4 +1,4 @@
-import React, {useState, useEffect } from "react";
+import React, {useState, useEffect, useRef } from "react";
 import {
   Modal,
   ModalHeader,
@@ -24,7 +24,7 @@ const Scroller = () => {
   const [nation, setNation] = useState("");
   const [club, setClub] = useState("");
   const [rating, setRating] = useState(0);
-  const [limit, setLimit] = useState(10);
+  const [limit, setLimit] = useState(5);
   const [skip, setSkip] = useState(0);
   const dispatch = useDispatch();
 
@@ -57,7 +57,12 @@ const previousPage = () => {
     setSkip(skip - limit)
 }
 
+const isFirstRun = useRef(true);
 useEffect(() => {
+  if(isFirstRun.current) {
+    isFirstRun.current = false;
+    return;
+  }
   getPlayers(query,dispatch, limit, skip)
 }, [skip, limit])
 
@@ -86,13 +91,15 @@ useEffect(() => {
           Nation: {nation}
         </ModalBody>
       </Modal>
-      <div className="buttons">
-          <br/>
-          <Button className="prevnext" color="primary" onClick={previousPage}>Previous page</Button>{'  '}
-          <Button className="prevnext" color="primary" onClick={nextPage}>Next page</Button>
-          <br/>
-          <br/>
+      {(!isFirstRun.current) && (
+        <div className="buttons">
+        <br/>
+        <Button className="prevnext" color="primary" onClick={previousPage}>Previous page</Button>{'  '}
+        <Button className="prevnext" color="primary" onClick={nextPage}>Next page</Button>
+        <br/>
+        <br/>
       </div>
+      )}
     </div>
   );
 };
