@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from "react";
+import React from "react";
 import "../css/searchbar.css";
 import Slider from "@material-ui/core/Slider";
 import Typography from "@material-ui/core/Typography";
@@ -22,7 +22,7 @@ const DropdownAge = () => {
         valueLabelDisplay="auto"
         step={1}
         min={15}
-        max={80}
+        max={45}
         onChange={(event, value) => handleChange(value)}
       />
     </div>
