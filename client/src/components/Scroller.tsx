@@ -1,20 +1,10 @@
-import React, {useState, useEffect, useRef } from "react";
-import {
-  Modal,
-  ModalHeader,
-  ModalBody,
-  Button
-} from "reactstrap";
+import React, { useState, useEffect, useRef } from "react";
+import { Modal, ModalHeader, ModalBody, Button } from "reactstrap";
 import { useSelector } from "react-redux";
-import {
-  IPlayer,
-  IPlayerReduxProps,
-  IAppState,
-} from "../interfaces";
-import '../css/scroller.css'
-import {useDispatch} from 'react-redux'
+import { IPlayer, IAppState } from "../interfaces";
+import "../css/scroller.css";
+import { useDispatch } from "react-redux";
 import { getPlayers } from "../actions/playerActions";
-
 
 const Scroller = () => {
   const [modal, setModal] = useState(false);
@@ -24,9 +14,17 @@ const Scroller = () => {
   const [nation, setNation] = useState("");
   const [club, setClub] = useState("");
   const [rating, setRating] = useState(0);
-  const [limit, setLimit] = useState(5);
   const [skip, setSkip] = useState(0);
   const dispatch = useDispatch();
+
+  const players = useSelector((state: IAppState) => state.players);
+  const pos = useSelector((state: IAppState) => state.position);
+  const nat = useSelector((state: IAppState) => state.nation);
+  const clu = useSelector((state: IAppState) => state.club);
+  const ag = useSelector((state: IAppState) => state.age);
+  const query = useSelector((state: IAppState) => state.query);
+
+  const limit = 50;
 
   const toggle = (
     playername: string,
@@ -34,14 +32,14 @@ const Scroller = () => {
     playerposition: string,
     playernation: string,
     playerclub: string,
-    rating: number,
+    rating: number
   ) => {
     setName(playername);
     setAge(playerage);
     setPosition(playerposition);
     setNation(playernation);
     setClub(playerclub);
-    setRating(rating)
+    setRating(rating);
     setModal(!modal);
   };
 
@@ -50,34 +48,50 @@ const Scroller = () => {
   };
 
   const nextPage = () => {
-    setSkip(skip + limit)
-}
+    setSkip(skip + limit);
+  };
 
-const previousPage = () => {
-    skip === 0 ? setSkip(0) : setSkip(skip - limit)
-}
+  const previousPage = () => {
+    skip === 0 ? setSkip(0) : setSkip(skip - limit);
+  };
 
-const isFirstRun = useRef(true);
-useEffect(() => {
-  if(isFirstRun.current) {
-    isFirstRun.current = false;
-    return;
-  }
-  getPlayers(query,dispatch, limit, skip)
-}, [skip, limit])
-
-
-  const players = useSelector((state: IAppState) => state.players);
-  const query = useSelector((state: IAppState) => state.query);
-
+  const isFirstRun = useRef(true);
+  useEffect(() => {
+    if (isFirstRun.current) {
+      isFirstRun.current = false;
+      return;
+    }
+    getPlayers(query, dispatch, limit, skip);
+  }, [query, dispatch, skip, limit]);
 
   return (
     <div>
-    {players.players.sort((player1, player2)  => player2.rating - player1.rating ).map((({...players} : IPlayer) => (
-                <div><Button className="button" color="secondary" onClick={() => toggle(players.name, players.age, players.position,
-                players.nation, players.club, players.rating)} > {players.name} {players.rating} </Button>
-                </div>       
-            )))}
+      {players.players
+        .filter((posplayer) => posplayer.position === pos || pos === "")
+        .filter((nationplayer) => nationplayer.nation === nat || nat === "")
+        .filter((clubplayer) => clubplayer.club === clu || clu === "")
+        .filter((ageplayer) => ageplayer.age >= ag || ageplayer.age === "RIP")
+        .sort((player1, player2) => player2.rating - player1.rating)
+        .map(({ ...players }: IPlayer) => (
+          <div>
+            <Button
+              className="playerbutton"
+              color="secondary"
+              onClick={() =>
+                toggle(
+                  players.name,
+                  players.age,
+                  players.position,
+                  players.nation,
+                  players.club,
+                  players.rating
+                )
+              }
+            >
+              {players.name} {players.rating}
+            </Button>
+          </div>
+        ))}
 
       <Modal isOpen={modal} toggle={toggleModal}>
         <ModalHeader toggle={toggleModal}> {name} </ModalHeader>
@@ -88,23 +102,36 @@ useEffect(() => {
           <br />
           Club: {club}
           <br />
-          Nation: {nation}
+          Nasjon: {nation}
+          <br />
+          Rating: {rating}
         </ModalBody>
       </Modal>
-      {(!isFirstRun.current) && (
+      {!isFirstRun.current && (
         <div className="buttons">
-        <br/>
-        <Button id={skip === 0 ? "disable" : ""} 
-        className="prevnext" 
-        color="primary" 
-        disabled={skip === 0 ? true : false} 
-        onClick={previousPage}>Previous page</Button>{'  '}
-        <Button id={players.players.length < 5 ? "disable" : ""} 
-        className="prevnext" color="primary" onClick={nextPage}
-        disabled={players.players.length < 5 ? true : false}>Next page</Button>
-        <br/>
-        <br/>
-      </div>
+          <br />
+          <Button
+            id={skip === 0 ? "disable" : ""}
+            className="prevnext"
+            color="primary"
+            disabled={skip === 0 ? true : false}
+            onClick={previousPage}
+          >
+            Previous page
+          </Button>
+          {"  "}
+          <Button
+            id={players.players.length < 5 ? "disable" : ""}
+            className="prevnext"
+            color="primary"
+            onClick={nextPage}
+            disabled={players.players.length < 5 ? true : false}
+          >
+            Next page
+          </Button>
+          <br />
+          <br />
+        </div>
       )}
     </div>
   );

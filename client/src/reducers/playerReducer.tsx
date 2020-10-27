@@ -1,5 +1,11 @@
-import { CLIENT_RENEG_LIMIT } from "tls";
-import { GET_PLAYERS, PLAYERS_LOADING } from "../actions/types";
+import {
+  GET_PLAYERS,
+  PLAYERS_LOADING,
+  SET_POSITION,
+  SET_NATION,
+  SET_CLUB,
+  SET_AGE,
+} from "../actions/types";
 import { IAppState, IAction } from "../interfaces";
 import initialState from "../store/initialState";
 
@@ -18,12 +24,35 @@ export default function playerReducer(
           players: action.payload,
           loading: false,
         },
-        query: action.new
+        query: action.new,
+      };
+    case SET_POSITION:
+      return {
+        ...state,
+        position: action.payload,
       };
     case PLAYERS_LOADING:
       return {
         ...state,
         loading: true,
+      };
+
+    case SET_NATION:
+      return {
+        ...state,
+        nation: action.payload,
+      };
+
+    case SET_CLUB:
+      return {
+        ...state,
+        club: action.payload,
+      };
+
+    case SET_AGE:
+      return {
+        ...state,
+        age: action.payload,
       };
     default:
       return state;

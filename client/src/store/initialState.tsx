@@ -1,11 +1,15 @@
-const initialState = {
-    players: {
-        players: [],
-        loading: false,
-    },
+import { IAppState, IPlayer } from "../interfaces";
 
-    query: "", 
-    
-}
+const initialState: IAppState = {
+  players: {
+    players: new Array<IPlayer>(),
+    loading: false,
+  },
+  query: "",
+  position: "",
+  nation: "",
+  club: "",
+  age: "",
+};
 
-export default initialState
+export default initialState;

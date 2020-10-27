@@ -39,5 +39,22 @@ export interface IAppState {
     players: IPlayer[];
     loading: boolean;
   };
-    query: string;
+  query: string;
+  position: string;
+  nation: string;
+  club: string;
+  age: string;
+}
+
+export interface IPositionState {
+  position: {
+    position: string;
+  };
+}
+
+export interface IPlayerState {
+  players: {
+    players: IPlayer[];
+    loading: boolean;
+  };
 }

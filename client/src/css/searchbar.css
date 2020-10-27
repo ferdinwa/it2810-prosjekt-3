@@ -1,0 +1,34 @@
+.jumbotron {
+  margin-bottom: 0px !important;
+  margin-top: 0px !important;
+}
+
+.filtercontainer {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.filterbar {
+  margin-top: 0px;
+  width: 25%;
+}
+
+.button {
+  width: 100% !important;
+  border-radius: 0px !important;
+  margin-top: 0px !important;
+  margin-left: 0px !important;
+}
+
+.slider {
+  padding-left: 2%;
+  padding-right: 2%;
+}
+
+.typo {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
