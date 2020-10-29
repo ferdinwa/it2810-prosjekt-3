@@ -1,6 +1,7 @@
 import axios from "axios";
 import { GET_PLAYERS, PLAYERS_LOADING } from "../actions/types";
 
+
 export const getPlayers = (
   query: string,
   position: string,
@@ -11,11 +12,6 @@ export const getPlayers = (
   limit: number,
   skip: number
 ) => {
-  console.log("Inne i getPlayers filter");
-  console.log(limit);
-  console.log(skip);
-  console.log(age);
-
   dispatch(setPlayersLoading());
   axios
     .get(

@@ -95,7 +95,7 @@ describe("Testing if there is possible to paginate backwards when you´re at the
 
 
 describe("Testing if there is possible to paginate backwards and foreward when there is only one player displayed", function() {
-    it("Searches for a player, and checks that both 'Next page' and 'Previous page' is disabled", function() {
+    it("Searches for a single player, and checks that both 'Next page' and 'Previous page' is disabled", function() {
         cy.get('#inputplayer').type("messi")
         cy.get('form').contains('Search').click()
         cy.get('.prevnext').contains("Previous page").should('not.be.enabled')

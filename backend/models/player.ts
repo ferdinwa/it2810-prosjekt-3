@@ -24,7 +24,7 @@ const PlayerSchema = new Schema({
     },
     rating: {
         type: Number
-    },
+    }
 });
 
 module.exports = mongoose.model('Player', PlayerSchema);

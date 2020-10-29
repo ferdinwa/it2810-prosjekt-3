@@ -28,6 +28,6 @@ const PlayerSchema = new Schema({
     },
     rating: {
         type: Number
-    },
+    }
 });
 module.exports = mongoose_1.default.model('Player', PlayerSchema);
