@@ -7,7 +7,6 @@ import SortAge from "./SortAge";
 import "../css/searchbar.css";
 
 const Filter = () => {
-  console.log("Hei");
   return (
     <div className="filtercontainer">
       <DropdownPosition />

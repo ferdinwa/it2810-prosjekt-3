@@ -42,21 +42,12 @@ router.get("/", (_req, res) => {
             .then((players) => res.json(players));
     }
 });
-// @route POST api/players
-// @desc Create a Player
-// @access Public
-router.post("/hei", (req, res) => {
-    const newPlayer = new Player({
-        name: req.body.name,
-    });
-    newPlayer.save().then((player) => res.json(player));
-});
-// @route DELETE api/players/:id
-// @desc Delete a Player
-// @access Public
-router.delete("/:id", (req, res) => {
-    Player.findById(req.params.id)
-        .then((player) => player.remove().then(() => res.json({ success: true })))
-        .catch((err) => res.status(404).json({ success: false }));
+router.put("/:id", (req, res) => {
+    console.log('put');
+    console.log("id = " + req.params.id);
+    console.log("Score = " + req.body.score);
+    Player.findOneAndUpdate({
+        id: req.params.id
+    }, { score: req.body.score }, { new: true }).then(data => res.json(data));
 });
 module.exports = router;

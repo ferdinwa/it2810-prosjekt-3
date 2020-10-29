@@ -24,6 +24,9 @@ const PlayerSchema = new Schema({
     },
     rating: {
         type: Number
+    },
+    score: {
+        type: Number
     }
 });
 

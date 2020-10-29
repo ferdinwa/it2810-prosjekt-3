@@ -7,6 +7,7 @@ export interface IPlayer {
   club: string;
   nation: string;
   rating: number;
+  score: number
 }
 
 export interface IPlayerReduxProps {

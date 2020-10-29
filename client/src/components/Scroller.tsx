@@ -5,6 +5,7 @@ import { IPlayer, IAppState } from "../interfaces";
 import "../css/scroller.css";
 import { useDispatch } from "react-redux";
 import { getPlayers } from "../actions/playerActions";
+import axios from 'axios';
 
 const Scroller = () => {
   const [modal, setModal] = useState(false);
@@ -15,6 +16,8 @@ const Scroller = () => {
   const [club, setClub] = useState("");
   const [rating, setRating] = useState(0);
   const [skip, setSkip] = useState(0);
+  const [score, setScore] = useState(0);
+  const [id, setId] = useState("");
   const dispatch = useDispatch();
 
   const players = useSelector((state: IAppState) => state.players);
@@ -32,7 +35,9 @@ const Scroller = () => {
     playerposition: string,
     playernation: string,
     playerclub: string,
-    rating: number
+    rating: number,
+    id: string,
+    score: number
   ) => {
     setName(playername);
     setAge(playerage);
@@ -40,6 +45,8 @@ const Scroller = () => {
     setNation(playernation);
     setClub(playerclub);
     setRating(rating);
+    setId(id);
+    setScore(score);
     setModal(!modal);
   };
 
@@ -54,6 +61,15 @@ const Scroller = () => {
   const previousPage = () => {
     skip === 0 ? setSkip(0) : setSkip(skip - limit);
   };
+
+  const changeScore = (inputScore: number) => {
+    let updatedScore = score + inputScore;
+    setScore(updatedScore)
+    console.log(score)
+    axios.put("/api/players/"+id, {score: updatedScore}).then((res)=> {
+    console.log("PLAYERS", res);
+    })
+  }
 
   const isFirstRun = useRef(true);
   useEffect(() => {
@@ -78,7 +94,9 @@ const Scroller = () => {
                 players.position,
                 players.nation,
                 players.club,
-                players.rating
+                players.rating,
+                players.id, 
+                players.score
               )
             }
           >
@@ -99,9 +117,13 @@ const Scroller = () => {
           Nasjon: {nation}
           <br />
           Rating: {rating}
+          <br/>
+          Score: {score}
         </ModalBody>
+        <Button color="success" onClick={() => changeScore(1)}>Upvote</Button>
+        <Button color="danger" onClick={() => changeScore(-1)}>Downvote</Button>
       </Modal>
-      {!isFirstRun.current && (
+      {(!isFirstRun.current && players.players.length > 0) && (
         <div className="buttons">
           <br />
           <Button

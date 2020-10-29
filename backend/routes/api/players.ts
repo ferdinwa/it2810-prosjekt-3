@@ -4,9 +4,7 @@ const router = express.Router();
 // Player Model
 const Player = require("../../models/player");
 
-// @route GET api/players
-// @desc GET all items
-// @access Public
+// GET api/players
 router.get("/", (_req: Request, res: Response) => {
   let playerName = _req.query.playerName;
   let position = _req.query.position;
@@ -39,23 +37,15 @@ router.get("/", (_req: Request, res: Response) => {
   }
 });
 
-// @route POST api/players
-// @desc Create a Player
-// @access Public
-router.post("/hei", (req: Request, res: Response) => {
-  const newPlayer = new Player({
-    name: req.body.name,
-  });
-  newPlayer.save().then((player) => res.json(player));
-});
 
-// @route DELETE api/players/:id
-// @desc Delete a Player
-// @access Public
-router.delete("/:id", (req: Request, res: Response) => {
-  Player.findById(req.params.id)
-    .then((player) => player.remove().then(() => res.json({ success: true })))
-    .catch((err) => res.status(404).json({ success: false }));
-});
+router.put("/:id", (req: Request, res: Response) => {
+  console.log('put')
+  console.log("id = "+ req.params.id)
+  console.log("Score = " + req.body.score  )
+  Player.findOneAndUpdate({
+    id: req.params.id}, 
+    {score: req.body.score }, 
+    {new: true}).then(data => res.json(data));  
+})
 
 module.exports = router;
