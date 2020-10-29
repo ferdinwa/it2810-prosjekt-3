@@ -17,3 +17,8 @@
 #disable {
   cursor: not-allowed;
 }
+
+.picture {
+  background-image: url("img/fifabackground.jpg");
+  background-size: cover;
+}

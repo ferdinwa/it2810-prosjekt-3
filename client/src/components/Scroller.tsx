@@ -65,7 +65,7 @@ const Scroller = () => {
   }, [query, dispatch, skip, limit]);
 
   return (
-    <div>
+    <div className="picture">
       {players.players.map(({ ...players }: IPlayer) => (
         <div>
           <Button
