@@ -1,14 +1,11 @@
 import React, { useState } from "react";
 import { Jumbotron, Button, Form, FormGroup, Input } from "reactstrap";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getPlayers } from "../actions/playerActions";
 import Filter from "./Filter";
 import "../css/searchbar.css";
 import { setQuery } from "../actions/queryActions";
-
-//interface SearchBarProps {
-//handleSubmit(e: React.FormEvent<HTMLFormElement>): void
-//}
+import { IAppState } from "../interfaces";
 
 const SearchBar = () => {
   const [name, setName] = useState("");
@@ -21,9 +18,14 @@ const SearchBar = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     console.log("Handled");
     e.preventDefault();
-    getPlayers(name, dispatch, 50, 0);
+    getPlayers(name, pos, nat, clu, ag, dispatch, 10, 0);
     setQuery(name);
   };
+
+  const pos = useSelector((state: IAppState) => state.position);
+  const nat = useSelector((state: IAppState) => state.nation);
+  const clu = useSelector((state: IAppState) => state.club);
+  const ag = useSelector((state: IAppState) => state.age);
 
   return (
     <div>
@@ -43,19 +45,15 @@ const SearchBar = () => {
             />
           </FormGroup>
           <p className="lead">
+            <Filter />
             <Button color="primary" id="searchbutton" block>
               Search
             </Button>
           </p>
         </Form>
       </Jumbotron>
-      <Filter />
     </div>
   );
 };
-
-/*const mapStateToProps = (state: IQueryReduxProps) => ({
-  query: state.query
-})*/
 
 export default SearchBar;

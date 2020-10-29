@@ -7,13 +7,20 @@
   width: 100%;
   display: flex;
   flex-direction: row;
-  padding-bottom: 2rem;
+  padding-bottom: 0;
+  flex-wrap: wrap;
+}
+
+.sortconatiner {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
 }
 
 .filterbar {
   margin-top: 0px;
-  width: 25%;
+  width: 33.3333333%;
 }
 
 .button {
@@ -31,4 +38,8 @@
 .typo {
   margin-top: 0 !important;
   margin-bottom: 0 !important;
+}
+
+.sort {
+  margin-left: 5%;
 }

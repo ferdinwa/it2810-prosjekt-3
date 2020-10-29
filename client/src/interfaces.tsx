@@ -43,7 +43,7 @@ export interface IAppState {
   position: string;
   nation: string;
   club: string;
-  age: string;
+  age: number;
 }
 
 export interface IPositionState {
