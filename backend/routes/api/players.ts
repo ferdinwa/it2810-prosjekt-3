@@ -15,8 +15,6 @@ router.get("/", (_req: Request, res: Response) => {
   let skip = _req.query.skip;
   let limit = _req.query.limit;
   let age = _req.query.age;
-  console.log("Nå er vi i spillere");
-  console.log(age);
   if (Number(age) === 0) {
     return Player.find({
       name: { $regex: playerName, $options: "i" },
