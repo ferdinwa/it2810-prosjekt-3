@@ -9,17 +9,42 @@ const Player = require("../../models/player");
 // @access Public
 router.get("/", (_req: Request, res: Response) => {
   let playerName = _req.query.playerName;
+  let position = _req.query.position;
+  let nation = _req.query.nation;
+  let club = _req.query.club;
   let skip = _req.query.skip;
-  let limit = _req.query.limit
-  return Player.find({
-    name: { $regex: playerName, $options: "i" }
-  }).skip(Number(skip)).limit(Number(limit)).then((players: any) => res.json(players));
+  let limit = _req.query.limit;
+  let age = _req.query.age;
+  console.log("Nå er vi i spillere");
+  console.log(age);
+  if (Number(age) === 0) {
+    return Player.find({
+      name: { $regex: playerName, $options: "i" },
+      position: { $regex: position, $options: "i" },
+      nation: { $regex: nation, $options: "i" },
+      club: { $regex: club, $options: "i" },
+    })
+      .skip(Number(skip))
+      .limit(Number(limit))
+      .then((players: any) => res.json(players));
+  } else {
+    return Player.find({
+      name: { $regex: playerName, $options: "i" },
+      position: { $regex: position, $options: "i" },
+      nation: { $regex: nation, $options: "i" },
+      club: { $regex: club, $options: "i" },
+    })
+      .sort({ age: Number(age) })
+      .skip(Number(skip))
+      .limit(Number(limit))
+      .then((players: any) => res.json(players));
+  }
 });
 
 // @route POST api/players
 // @desc Create a Player
 // @access Public
-router.post("/", (req: Request, res: Response) => {
+router.post("/hei", (req: Request, res: Response) => {
   const newPlayer = new Player({
     name: req.body.name,
   });

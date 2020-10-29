@@ -24,7 +24,7 @@ const Scroller = () => {
   const ag = useSelector((state: IAppState) => state.age);
   const query = useSelector((state: IAppState) => state.query);
 
-  const limit = 50;
+  const limit = 10;
 
   const toggle = (
     playername: string,
@@ -61,37 +61,31 @@ const Scroller = () => {
       isFirstRun.current = false;
       return;
     }
-    getPlayers(query, dispatch, limit, skip);
+    getPlayers(query, pos, nat, clu, ag, dispatch, limit, skip);
   }, [query, dispatch, skip, limit]);
 
   return (
     <div>
-      {players.players
-        .filter((posplayer) => posplayer.position === pos || pos === "")
-        .filter((nationplayer) => nationplayer.nation === nat || nat === "")
-        .filter((clubplayer) => clubplayer.club === clu || clu === "")
-        .filter((ageplayer) => ageplayer.age >= ag || ageplayer.age === "RIP")
-        .sort((player1, player2) => player2.rating - player1.rating)
-        .map(({ ...players }: IPlayer) => (
-          <div>
-            <Button
-              className="playerbutton"
-              color="secondary"
-              onClick={() =>
-                toggle(
-                  players.name,
-                  players.age,
-                  players.position,
-                  players.nation,
-                  players.club,
-                  players.rating
-                )
-              }
-            >
-              {players.name} {players.rating}
-            </Button>
-          </div>
-        ))}
+      {players.players.map(({ ...players }: IPlayer) => (
+        <div>
+          <Button
+            className="playerbutton"
+            color="secondary"
+            onClick={() =>
+              toggle(
+                players.name,
+                players.age,
+                players.position,
+                players.nation,
+                players.club,
+                players.rating
+              )
+            }
+          >
+            {players.name} {players.rating}
+          </Button>
+        </div>
+      ))}
 
       <Modal isOpen={modal} toggle={toggleModal}>
         <ModalHeader toggle={toggleModal}> {name} </ModalHeader>

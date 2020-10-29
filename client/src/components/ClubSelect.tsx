@@ -8,7 +8,7 @@ const DropdownClub = () => {
   const dispatch = useDispatch();
 
   const optionClub = [
-    { value: "", label: "All nations" },
+    { value: "", label: "All clubs" },
     { value: "Arsenal", label: "Arsenal" },
     { value: "Atalanta", label: "Atalanta" },
     { value: "Atletico Madrid", label: "Atletico Madrid" },

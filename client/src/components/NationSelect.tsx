@@ -6,6 +6,7 @@ import { setNation } from "../actions/nationActions";
 
 const DropdownNation = () => {
   const dispatch = useDispatch();
+
   const optionNation = [
     { value: "", label: "All nations" },
     { value: "Argentina", label: "Argentina" },
@@ -47,8 +48,8 @@ const DropdownNation = () => {
     { value: "Wales", label: "Wales" },
   ];
 
-  const handleClick = (nation: string) => {
-    dispatch(setNation(nation));
+  const handleClick = (nat: string) => {
+    dispatch(setNation(nat));
   };
 
   return (

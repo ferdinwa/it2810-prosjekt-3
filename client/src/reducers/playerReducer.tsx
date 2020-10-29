@@ -26,6 +26,7 @@ export default function playerReducer(
         },
         query: action.new,
       };
+
     case SET_POSITION:
       return {
         ...state,

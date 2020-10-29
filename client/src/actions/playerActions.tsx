@@ -3,17 +3,24 @@ import { GET_PLAYERS, PLAYERS_LOADING } from "../actions/types";
 
 export const getPlayers = (
   query: string,
+  position: string,
+  nation: string,
+  club: string,
+  age: number,
   dispatch: any,
   limit: number,
   skip: number
 ) => {
-  console.log("Halla");
-  console.log(`limit: ${limit}`);
-  console.log(`skip: ${skip}`);
+  console.log("Inne i getPlayers filter");
+  console.log(limit);
+  console.log(skip);
+  console.log(age);
 
   dispatch(setPlayersLoading());
   axios
-    .get(`/api/players?playerName=${query}&limit=${limit}&skip=${skip}`)
+    .get(
+      `/api/players?playerName=${query}&position=${position}&nation=${nation}&club=${club}&limit=${limit}&skip=${skip}&age=${age}`
+    )
     .then((res) => {
       console.log("PLAYERS", res);
       dispatch({
