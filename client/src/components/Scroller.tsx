@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { Modal, ModalHeader, ModalBody, Button } from "reactstrap";
 import { useSelector } from "react-redux";
 import { IPlayer, IAppState } from "../interfaces";
@@ -65,7 +65,7 @@ const Scroller = () => {
   }, [query, dispatch, skip, limit]);
 
   return (
-    <div className="picture">
+    <div className="picture" data-testid="scroller">
       {players.players.map(({ ...players }: IPlayer) => (
         <div>
           <Button

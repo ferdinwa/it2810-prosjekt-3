@@ -4,7 +4,7 @@ import { setPosition } from "../actions/positionActions";
 import { useDispatch } from "react-redux";
 import Select from "react-select";
 
-const DropdownPosition = () => {
+const PositionSelect = () => {
   const dispatch = useDispatch();
 
   const optionPosition = [
@@ -42,4 +42,4 @@ const DropdownPosition = () => {
   );
 };
 
-export default DropdownPosition;
+export default PositionSelect;

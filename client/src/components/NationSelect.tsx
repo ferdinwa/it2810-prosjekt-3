@@ -4,7 +4,7 @@ import "../css/searchbar.css";
 import { useDispatch } from "react-redux";
 import { setNation } from "../actions/nationActions";
 
-const DropdownNation = () => {
+const NationSelect = () => {
   const dispatch = useDispatch();
 
   const optionNation = [
@@ -66,4 +66,4 @@ const DropdownNation = () => {
   );
 };
 
-export default DropdownNation;
+export default NationSelect;

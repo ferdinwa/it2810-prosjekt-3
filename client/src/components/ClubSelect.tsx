@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import Select from "react-select";
 import { setClub } from "../actions/clubActions";
 
-const DropdownClub = () => {
+const ClubSelect = () => {
   const dispatch = useDispatch();
 
   const optionClub = [
@@ -53,4 +53,4 @@ const DropdownClub = () => {
   );
 };
 
-export default DropdownClub;
+export default ClubSelect;
