@@ -1,3 +1,9 @@
+**For å kjøre prosjektet etter kloning:** <br>
+Kjøre `npm install` i "client"-mappen, og i "prosjekt-3"-mappen. <br>
+Kjøre `npm run dev` i "prosjekt-3"-mappen (her bruker vi concurrently for å kjøre client og server samtidig)
+
+**For å kjøre end-2-end-testene:** <br>
+Kjøre `npm run testing` i "prosjekt-3"-mappen
 
 # Prosjekt 3 - Gruppe 77
 
@@ -17,10 +23,6 @@
 Vi har i denne oppgaven laget en nettside med frontend og backend der fokus er på søk. Objektene vi søker på er fotballspillere, og siden tilbyr
 funksjonalitet for å søke på, sortere og filtrere på ulike parametre. 
 
-For å kjøre prosjektet manuelt: <br>
-Kjøre `npm install` i "client"-mappen, og i "prosjekt-3"-mappen. <br>
-Kjøre `npm run dev` i "prosjekt-3"-mappen (her bruker vi concurrently for å kjøre client og server samtidig)
-
 
 ## Innhold og funksjonalitet
 
@@ -33,6 +35,17 @@ Brukeren har også mulighet til å filtrere på posisjon, klubb og nasjon.
 Etter å ha gjennomført et søk (med resultater), vil spillerobjektene som tilfredsstiller søket listes opp 10 og 10, og det er lagt til rette for å hente ut flere resultater ved blaing i sider dersom man ønsker å se mer av resultatsettet. 
 I tillegg er hvert spillerobjekt representert som en knapp. Ved å trykke på en spiller, vil man få opp et pop-up vindu med mer informasjon om den valgte spilleren. 
 Her har man også muligheten til å upvote/downvote spillere, og denne scoren vil oppdateres i databasen. 
+
+Følgende bilder viser siden før noe søk er gjennomført, og pop-up-en som vises når man klikker på en spiller:
+
+<div align="center">
+    <img src="client/public/pictures/Skjermbilde 2020-10-30 kl. 14.14.59.png" align="center" height="400">
+</div>
+
+
+<div align="center">
+    <img src="client/public/pictures/Skjermbilde 2020-10-30 kl. 14.15.48.png" align="center" height="400">
+</div>
 
 ## Krav til teknologi
 
@@ -123,6 +136,7 @@ Vi har også tatt i bruk Reactselect på filtreringskomponentene våre. Reactsel
 For enhetstesting har vi tatt i bruk react-testing-library. Dette er et bibliotek som gjør det enkelt å implementere testing for å sjekke om komponentene gjør det de er satt til å gjøre. Vi har brukt dette til å lage fire enkle tester på fire av komponentene våre i Searchbar og Scroller. 
 To av testene sjekker om det er riktig tekst som blir satt når komponenter mounter. De to andre tester at komponentene mounter når de er satt til å mounte.
 
+
 **End-to-end testing** <br>
 Det overordnede kravet når det kommer til end-to-end testing for dette prosjektet var å ha en form for automatisert end-to-end testing. 
 Til dette brukte vi cypress, som gjør det enkelt å automatisere end-to-end testing, og lot oss teste den viktigste funksjonaliteten i applikasjonen. Vi skrev totalt 8 ulike tester for å teste de viktigste funksjonene appen tilbyr. 
@@ -130,3 +144,12 @@ Filen testing.ts i cypress-folderen inneholder disse testene. Her er det impleme
 I tillegg har vi tester for filtrering og sortering, og for å undersøke at pagineringen fungerer som den skal. Grunnen til at vi valgte å bruke cypress, er at det er lett å sette opp/lære seg, og at det er enkelt å debugge eventuelle feil. 
 
 For å kjøre testene selv må man først og fremst ha kjørt `npm install` i både “prosjekt-3”-mappen, og i "client"-mappen. Deretter kan man kjøre testene med `npm run testing` fra “prosjekt-3”-mappen. Da vil det åpnes et eget cypress-vindu, og ved å deretter velge testing.ts, fra tests-folderen vil testene kjøre automatisk. 
+
+Følgende bilder viser henholdsvis enhetstestene, og end-2-end-testene etter kjøring:
+<div align="center">
+    <img src="client/public/pictures/Skjermbilde 2020-10-30 kl. 14.20.13.png" align="left" height="400" width="600">
+</div>
+
+<div align="center">
+    <img src="client/public/pictures/Skjermbilde 2020-10-30 kl. 14.18.53.png" align="center" height="400">
+</div>
