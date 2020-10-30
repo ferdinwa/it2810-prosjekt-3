@@ -3,7 +3,7 @@ Kjør `npm install` i "client"-mappen, og i "prosjekt-3"-mappen. <br>
 Kjør `npm run dev` i "prosjekt-3"-mappen (her bruker vi concurrently for å kjøre client og server samtidig)
 
 **For å kjøre end-2-end-testene:** <br>
-Kjøre `npm run testing` i "prosjekt-3"-mappen
+Kjør `npm run testing` i "prosjekt-3"-mappen
 
 # Prosjekt 3 - Gruppe 77
 
