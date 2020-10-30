@@ -1,11 +1,12 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Modal, ModalHeader, ModalBody, Button } from "reactstrap";
 import { useSelector } from "react-redux";
 import { IPlayer, IAppState } from "../interfaces";
 import "../css/scroller.css";
 import { useDispatch } from "react-redux";
 import { getPlayers } from "../actions/playerActions";
-import axios from 'axios';
+import axios from "axios";
+import images from "../media/images/images";
 
 const Scroller = () => {
   const [modal, setModal] = useState(false);
@@ -25,6 +26,7 @@ const Scroller = () => {
   const nat = useSelector((state: IAppState) => state.nation);
   const clu = useSelector((state: IAppState) => state.club);
   const ag = useSelector((state: IAppState) => state.age);
+  const scor = useSelector((state: IAppState) => state.score);
   const query = useSelector((state: IAppState) => state.query);
 
   const limit = 10;
@@ -64,12 +66,12 @@ const Scroller = () => {
 
   const changeScore = (inputScore: number) => {
     let updatedScore = score + inputScore;
-    setScore(updatedScore)
-    console.log(score)
-    axios.put("/api/players/"+id, {score: updatedScore}).then((res)=> {
-    console.log("PLAYERS", res);
-    })
-  }
+    setScore(updatedScore);
+    console.log(score);
+    axios.put("/api/players/" + id, { score: updatedScore }).then((res) => {
+      console.log("PLAYERS", res);
+    });
+  };
 
   const isFirstRun = useRef(true);
   useEffect(() => {
@@ -77,8 +79,10 @@ const Scroller = () => {
       isFirstRun.current = false;
       return;
     }
-    getPlayers(query, pos, nat, clu, ag, dispatch, limit, skip);
+    getPlayers(query, pos, nat, clu, ag, scor, dispatch, limit, skip);
   }, [query, dispatch, skip, limit]);
+
+  const imgSrc = images[name];
 
   return (
     <div className="picture" data-testid="scroller">
@@ -95,7 +99,7 @@ const Scroller = () => {
                 players.nation,
                 players.club,
                 players.rating,
-                players.id, 
+                players.id,
                 players.score
               )
             }
@@ -107,23 +111,32 @@ const Scroller = () => {
 
       <Modal isOpen={modal} toggle={toggleModal}>
         <ModalHeader toggle={toggleModal}> {name} </ModalHeader>
-        <ModalBody>
-          Age: {age}
-          <br />
-          Position: {position}
-          <br />
-          Club: {club}
-          <br />
-          Nasjon: {nation}
-          <br />
-          Rating: {rating}
-          <br/>
-          Score: {score}
+        <ModalBody className="modalcontainer">
+          <div>
+            {" "}
+            Age: {age}
+            <br />
+            Position: {position}
+            <br />
+            Club: {club}
+            <br />
+            Nasjon: {nation}
+            <br />
+            Rating: {rating}
+            <br />
+            Score: {score}
+          </div>
+          <img src={imgSrc} className="playerimg" />
+          {console.log(imgSrc)}
         </ModalBody>
-        <Button color="success" onClick={() => changeScore(1)}>Upvote</Button>
-        <Button color="danger" onClick={() => changeScore(-1)}>Downvote</Button>
+        <Button color="success" onClick={() => changeScore(1)}>
+          Upvote
+        </Button>
+        <Button color="danger" onClick={() => changeScore(-1)}>
+          Downvote
+        </Button>
       </Modal>
-      {(!isFirstRun.current && players.players.length > 0) && (
+      {!isFirstRun.current && (
         <div className="buttons">
           <br />
           <Button

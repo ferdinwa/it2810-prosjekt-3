@@ -9,10 +9,10 @@ exports[`Test AppNavbar 1`] = `
       className="container"
     >
       <a
-        className="navbar-brand"
+        className="navbartext navbar-brand"
         href="/"
       >
-        FutWeb
+        FH
       </a>
       <button
         aria-label="Toggle navigation"
@@ -39,7 +39,12 @@ exports[`Test AppNavbar 1`] = `
               href="https://www.youtube.com/watch?v=ZJHUn8cV13w"
               onClick={[Function]}
             >
-              Maren blir overrasket
+              <img
+                alt=""
+                className="img"
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/FIFA_21_logo.svg/1200px-FIFA_21_logo.svg.png"
+              />
+               
             </a>
           </li>
         </ul>

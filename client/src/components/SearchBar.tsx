@@ -18,7 +18,7 @@ const SearchBar = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     console.log("Handled");
     e.preventDefault();
-    getPlayers(name, pos, nat, clu, ag, dispatch, 10, 0);
+    getPlayers(name, pos, nat, clu, ag, scor, dispatch, 10, 0);
     setQuery(name);
   };
 
@@ -26,11 +26,12 @@ const SearchBar = () => {
   const nat = useSelector((state: IAppState) => state.nation);
   const clu = useSelector((state: IAppState) => state.club);
   const ag = useSelector((state: IAppState) => state.age);
+  const scor = useSelector((state: IAppState) => state.score);
 
   return (
     <div data-testid="jumbotron">
       <Jumbotron className="jumbotron">
-        <h1 className="display-3" text-align>
+        <h1 className="display-3 header" text-align>
           FutHeader
         </h1>
         <hr className="my-2" />

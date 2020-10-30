@@ -1,3 +1,42 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Disallow:
+
+backend/
+│
+├── server.js 
+└── models/
+│	└── players.ts
+└── routes/
+	└──	players.ts
+	
+
+
+client/
+│
+├── actions/
+│   ├── ageActions.tsx
+│   ├── clubActions.tsx
+│   ├── …
+│   └── types.tsx
+│	
+├── components/
+│   ├── Appnavbar.tsx
+│   ├──	…
+│   └── SortScore.tsx
+│ 		
+├── css/
+│   ├──	navbar.css
+│   ├── scroller.css
+│   └──	searchbar.css
+│		
+├── reducers/
+│   ├── inndex.tsx
+│   └── playerReducer.tsx
+│
+├── store/
+│   ├── initialState.tsx
+│   └── store.tsx
+│
+├── App.tsx
+└── index.js

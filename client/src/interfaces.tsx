@@ -7,7 +7,7 @@ export interface IPlayer {
   club: string;
   nation: string;
   rating: number;
-  score: number
+  score: number;
 }
 
 export interface IPlayerReduxProps {
@@ -45,6 +45,7 @@ export interface IAppState {
   nation: string;
   club: string;
   age: number;
+  score: number;
 }
 
 export interface IPositionState {

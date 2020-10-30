@@ -1,21 +1,22 @@
 import axios from "axios";
 import { GET_PLAYERS, PLAYERS_LOADING } from "../actions/types";
 
-
 export const getPlayers = (
   query: string,
   position: string,
   nation: string,
   club: string,
   age: number,
+  score: number,
   dispatch: any,
   limit: number,
   skip: number
 ) => {
   dispatch(setPlayersLoading());
+  console.log("getPlayers", score);
   axios
     .get(
-      `/api/players?playerName=${query}&position=${position}&nation=${nation}&club=${club}&limit=${limit}&skip=${skip}&age=${age}`
+      `/api/players?playerName=${query}&position=${position}&nation=${nation}&club=${club}&limit=${limit}&skip=${skip}&age=${age}&score=${score}`
     )
     .then((res) => {
       console.log("PLAYERS", res);

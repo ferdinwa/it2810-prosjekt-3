@@ -5,6 +5,7 @@ import {
   SET_NATION,
   SET_CLUB,
   SET_AGE,
+  GET_SCORE,
 } from "../actions/types";
 import { IAppState, IAction } from "../interfaces";
 import initialState from "../store/initialState";
@@ -54,6 +55,11 @@ export default function playerReducer(
       return {
         ...state,
         age: action.payload,
+      };
+    case GET_SCORE:
+      return {
+        ...state,
+        score: action.payload,
       };
     default:
       return state;

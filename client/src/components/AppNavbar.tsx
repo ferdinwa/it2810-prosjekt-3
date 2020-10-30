@@ -10,6 +10,7 @@ import {
   Container,
 } from "reactstrap";
 import "../css/navbar.css";
+import { Audio } from "./Audio";
 
 export default function AppNavbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -24,13 +25,22 @@ export default function AppNavbar() {
     <div>
       <Navbar color="dark" dark expand="sm" className="navbar">
         <Container>
-          <NavbarBrand href="/">FutWeb</NavbarBrand>
+          <NavbarBrand href="/" className="navbartext">
+            FH
+          </NavbarBrand>
+          {/* <Audio /> */}
           <NavbarToggler onClick={toggle} />
           <Collapse isOpen={isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
                 <NavLink href="https://www.youtube.com/watch?v=ZJHUn8cV13w">
-                  Maren blir overrasket
+                  <img
+                    className="img"
+                    src={
+                      "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/FIFA_21_logo.svg/1200px-FIFA_21_logo.svg.png"
+                    }
+                    alt=""
+                  />{" "}
                 </NavLink>
               </NavItem>
             </Nav>

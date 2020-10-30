@@ -1,7 +1,7 @@
 import React from "react";
 import "../css/searchbar.css";
 import { useDispatch } from "react-redux";
-import { ButtonGroup, Button, FormGroup, Label, Input } from "reactstrap";
+import { FormGroup, Label, Input, Button } from "reactstrap";
 import { setAge } from "../actions/ageActions";
 
 const SortAge = () => {
@@ -11,25 +11,25 @@ const SortAge = () => {
   };
 
   return (
-    <div className="sortcontainer">
+    <div className="sortelement">
       <FormGroup className="filtercontainer">
         <legend>Sort on age: </legend>
         <FormGroup check className="sort">
           <Label check>
             <Input type="radio" name="radio1" onClick={() => handleClick(0)} />{" "}
-            No Sort
+            No sorting
           </Label>
         </FormGroup>
         <FormGroup check className="sort">
           <Label check>
             <Input type="radio" name="radio1" onClick={() => handleClick(1)} />{" "}
-            ASC
+            Ascending
           </Label>
         </FormGroup>
         <FormGroup check className="sort">
           <Label check>
             <Input type="radio" name="radio1" onClick={() => handleClick(-1)} />{" "}
-            DESC
+            Descending
           </Label>
         </FormGroup>
       </FormGroup>
