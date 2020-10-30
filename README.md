@@ -56,6 +56,38 @@ Hovedkomponentene i React-applikasjonen er SearchBar.tsx og Scroller.tsx. Search
 Filter.tsx er en egen fil, som igjen er forelder til spesifikke komponenter for ulik filtrering. Dermed ligger all funksjonalitet for søk, filtrering og sortering under SearchBar.tsx. 
 Scroller.tsx inneholder all funksjonalitet for å vise resultatsettet. 
 Her ligger altså funksjonalitet for å vise spillerne, vise mer info om hver enkelt og bla mellom ulike sider i resultatsettet. 
+Figuren under viser komponentstrukturen i klientapplikasjonen vår: 
+
+```
+client/
+│
+├── actions/
+│   ├── ageActions.tsx
+│   ├── clubActions.tsx
+│   ├── …
+│   └── types.tsx
+│	
+├── components/
+│   ├── Appnavbar.tsx
+│   ├──	…
+│   └── SortScore.tsx
+│ 		
+├── css/
+│   ├──	navbar.css
+│   ├── scroller.css
+│   └──	searchbar.css
+│		
+├── reducers/
+│   ├── inndex.tsx
+│   └── playerReducer.tsx
+│
+├── store/
+│   ├── initialState.tsx
+│   └── store.tsx
+│
+├── App.tsx
+└── index.js
+```
 
 Vi baserte prosjektet på Node.js, og brukte pakken create-react-app for å sette opp prosjektet. 
 Følgende kommando ble kjørt i terminalen for å sette opp prosjektet med TypeScript:
@@ -144,6 +176,9 @@ Det overordnede kravet når det kommer til end-to-end testing for dette prosjekt
 Til dette brukte vi cypress, som gjør det enkelt å automatisere end-to-end testing, og lot oss teste den viktigste funksjonaliteten i applikasjonen. Vi skrev totalt 8 ulike tester for å teste de viktigste funksjonene appen tilbyr. 
 Filen testing.ts i cypress-folderen inneholder disse testene. Her er det implementert tester for å sjekke at søk fungerer som det skal, både ved gyldig og ugyldige søkeord. 
 I tillegg har vi tester for filtrering og sortering, og for å undersøke at pagineringen fungerer som den skal. Grunnen til at vi valgte å bruke cypress, er at det er lett å sette opp/lære seg, og at det er enkelt å debugge eventuelle feil. 
+
+**Cross-browser testing** <br>
+Vi har testet nettsiden i både Chrome og Safari og alt av funksjonalitet fungerer som det skal.
 
 For å kjøre testene selv må man først og fremst ha kjørt `npm install` i både “prosjekt-3”-mappen, og i "client"-mappen. Deretter kan man kjøre testene med `npm run testing` fra “prosjekt-3”-mappen. Da vil det åpnes et eget cypress-vindu, og ved å deretter velge testing.ts, fra tests-folderen vil testene kjøre automatisk. 
 
