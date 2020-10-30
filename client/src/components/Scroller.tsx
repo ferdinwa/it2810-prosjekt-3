@@ -126,7 +126,7 @@ const Scroller = () => {
             <br />
             Club: {club}
             <br />
-            Nasjon: {nation}
+            Nation: {nation}
             <br />
             Rating: {rating}
             <br />

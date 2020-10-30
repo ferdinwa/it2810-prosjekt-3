@@ -7,6 +7,7 @@ import { setClub } from "../actions/clubActions";
 const ClubSelect = () => {
   const dispatch = useDispatch();
 
+  //list of all the clubs in database
   const optionClub = [
     { value: "", label: "All clubs" },
     { value: "Arsenal", label: "Arsenal" },
@@ -39,6 +40,7 @@ const ClubSelect = () => {
     dispatch(setClub(pos));
   };
 
+  //React-select component to select different clubs and set global state to given club
   return (
     <div className="filterbar">
       <Select

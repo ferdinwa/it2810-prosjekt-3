@@ -7,6 +7,7 @@ import { setNation } from "../actions/nationActions";
 const NationSelect = () => {
   const dispatch = useDispatch();
 
+  //List of nations in database
   const optionNation = [
     { value: "", label: "All nations" },
     { value: "Argentina", label: "Argentina" },
@@ -51,6 +52,8 @@ const NationSelect = () => {
   const handleClick = (nat: string) => {
     dispatch(setNation(nat));
   };
+
+  //React-select component to select between different nation and sets the global state to given nation
 
   return (
     <div className="filterbar">

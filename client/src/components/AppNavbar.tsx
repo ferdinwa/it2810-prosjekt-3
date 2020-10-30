@@ -10,11 +10,10 @@ import {
   Container,
 } from "reactstrap";
 import "../css/navbar.css";
-import { Audio } from "./Audio";
 
 export default function AppNavbar() {
   const [isOpen, setIsOpen] = useState(false);
-  
+
   //toggles the navbar (is open or not)
   const toggle = () => {
     setIsOpen(!isOpen);

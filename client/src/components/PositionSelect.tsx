@@ -7,6 +7,7 @@ import Select from "react-select";
 const PositionSelect = () => {
   const dispatch = useDispatch();
 
+  //List of different position available in database
   const optionPosition = [
     { value: "", label: "All positions" },
     { value: "GK", label: "Goalkeeper" },
@@ -28,6 +29,7 @@ const PositionSelect = () => {
     dispatch(setPosition(pos));
   };
 
+  //React-select compontent to select between different positions and sets global state to given positions
   return (
     <div className="filterbar">
       <Select

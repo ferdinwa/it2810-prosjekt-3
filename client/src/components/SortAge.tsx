@@ -10,6 +10,7 @@ const SortAge = () => {
     dispatch(setAge(num));
   };
 
+  //FormGroup to select type of sort on age
   return (
     <div className="sortelement">
       <FormGroup className="filtercontainer">

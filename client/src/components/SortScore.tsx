@@ -11,6 +11,7 @@ const SortScore = () => {
     dispatch(getScore(num));
   };
 
+  //FormGroup to select type of sort on score
   return (
     <div className="sortelement">
       <FormGroup className="filtercontainer">
