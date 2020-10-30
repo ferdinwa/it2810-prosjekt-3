@@ -1,6 +1,6 @@
 **For å kjøre prosjektet etter kloning:** <br>
-Kjøre `npm install` i "client"-mappen, og i "prosjekt-3"-mappen. <br>
-Kjøre `npm run dev` i "prosjekt-3"-mappen (her bruker vi concurrently for å kjøre client og server samtidig)
+Kjør `npm install` i "client"-mappen, og i "prosjekt-3"-mappen. <br>
+Kjør `npm run dev` i "prosjekt-3"-mappen (her bruker vi concurrently for å kjøre client og server samtidig)
 
 **For å kjøre end-2-end-testene:** <br>
 Kjøre `npm run testing` i "prosjekt-3"-mappen
@@ -122,6 +122,8 @@ Express modellerer også dataen på en god måte, og i player.ts har vi brukt Mo
 I prosjektet har Axios blitt brukt. Dette er et klient-bibliotek for å sende HTTP request og håndtere responsene. 
 Vi har spesifikt brukt axios for å hente ut spillere fra databasen, og for å oppdatere/lagre scoren til hver spiller. 
 For å hente ut spillerne fra databasen, sender vi en axios GET-request der URL-en tilpasses til hva som har blitt søkt og filtrert på. Denne URL-en vil svare til en route i Express som dermed vil hente ut gjeldende spillere fra databasen.
+
+For å lagre til databasen bruker vi axios.put() i Scroller.tsx. Denne blir kalt hver gang vi upvoter eller downvoter, og databasen blir oppdatert med den nye verdien for score. Det at den nye verdien blir lagret til databasen kan være vanskelig å se for bruker, og om man oppdaterer score på en spiller, krysser ut spiller og går inn på samme spiller, vil ikke den oppdaterte scoren fra databasen bli hentet ut. Dette kan ha med at når spillerne først er hentet ut fra databasen vil disse lagres i cachen og dermed ikke vises at de er oppdatert før siden er refreshet eller et nytt søk er gjort. 
 
 **Reactstrap** <br>
 Reactstrap er et front-end-rammeverk som gjør React Bootstrap komponenter kompatibelt med React. React Bootstrap komponenter er forhåndslagde og populære UI-komponenter som er implementert på en måte som gir god fleksibilitet og forhåndsvalidering. 

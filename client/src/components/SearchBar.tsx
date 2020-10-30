@@ -7,6 +7,7 @@ import "../css/searchbar.css";
 import { setQuery } from "../actions/queryActions";
 import { IAppState } from "../interfaces";
 
+//Parent-component to Filter.tsx. Handles the searching for players
 const SearchBar = () => {
   const [name, setName] = useState("");
   const dispatch = useDispatch();
@@ -16,14 +17,14 @@ const SearchBar = () => {
     setName(e.currentTarget.value);
   };
 
-  //on submit, get players from database and set global state query
+  //On submit, get players from database and set global state query
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     getPlayers(name, pos, nat, clu, ag, scor, dispatch, 10, 0);
     setQuery(name);
   };
 
-  //get global state variables
+  //get global state variables from the Redux Store with the useSelector-hook. 
   const pos = useSelector((state: IAppState) => state.position);
   const nat = useSelector((state: IAppState) => state.nation);
   const clu = useSelector((state: IAppState) => state.club);

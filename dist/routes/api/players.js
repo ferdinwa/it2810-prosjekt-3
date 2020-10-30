@@ -8,6 +8,9 @@ const router = express_1.default.Router();
 // Player Model
 const Player = require("../../models/player");
 // GET api/players
+// Matches the axios.get request which gets all the players who matches the regex pattern
+// This method also sorts the players if the user has chosen this.
+// Also handles the pagination. 
 router.get("/", (_req, res) => {
     let playerName = _req.query.playerName;
     let position = _req.query.position;
@@ -76,11 +79,10 @@ router.get("/", (_req, res) => {
             .then((players) => res.json(players));
     }
 });
-//update score on player in database
+//update score on player in database. Finds a player with the same id as
+//the id sent in from the axios.put-function. Then updates this players score with
+//the score sent in from the requests body. 
 router.put("/:id", (req, res) => {
-    console.log("put");
-    console.log("id = " + req.params.id);
-    console.log("Score = " + req.body.score);
     Player.findOneAndUpdate({
         id: req.params.id,
     }, { score: req.body.score }, { new: true }).then((data) => res.json(data));

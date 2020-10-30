@@ -21,7 +21,7 @@ const Scroller = () => {
   const [id, setId] = useState("");
   const dispatch = useDispatch();
 
-  //get global state variables
+  //get global state variables from the Redux store
   const players = useSelector((state: IAppState) => state.players);
   const pos = useSelector((state: IAppState) => state.position);
   const nat = useSelector((state: IAppState) => state.nation);
