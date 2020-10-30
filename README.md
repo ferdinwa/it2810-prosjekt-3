@@ -56,6 +56,38 @@ Hovedkomponentene i React-applikasjonen er SearchBar.tsx og Scroller.tsx. Search
 Filter.tsx er en egen fil, som igjen er forelder til spesifikke komponenter for ulik filtrering. Dermed ligger all funksjonalitet for søk, filtrering og sortering under SearchBar.tsx. 
 Scroller.tsx inneholder all funksjonalitet for å vise resultatsettet. 
 Her ligger altså funksjonalitet for å vise spillerne, vise mer info om hver enkelt og bla mellom ulike sider i resultatsettet. 
+Figuren under viser komponentstrukturen i klientapplikasjonen vår: 
+
+```
+client/
+│
+├── actions/
+│   ├── ageActions.tsx
+│   ├── clubActions.tsx
+│   ├── …
+│   └── types.tsx
+│	
+├── components/
+│   ├── Appnavbar.tsx
+│   ├──	…
+│   └── SortScore.tsx
+│ 		
+├── css/
+│   ├──	navbar.css
+│   ├── scroller.css
+│   └──	searchbar.css
+│		
+├── reducers/
+│   ├── inndex.tsx
+│   └── playerReducer.tsx
+│
+├── store/
+│   ├── initialState.tsx
+│   └── store.tsx
+│
+├── App.tsx
+└── index.js
+```
 
 Vi baserte prosjektet på Node.js, og brukte pakken create-react-app for å sette opp prosjektet. 
 Følgende kommando ble kjørt i terminalen for å sette opp prosjektet med TypeScript:
