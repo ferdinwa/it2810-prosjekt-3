@@ -7,6 +7,7 @@ import SortScore from "./SortScore";
 
 import "../css/searchbar.css";
 
+//filtering on different attributes
 const Filter = () => {
   return (
     <div className="filtercontainer">

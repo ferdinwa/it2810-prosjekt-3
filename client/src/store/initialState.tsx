@@ -1,5 +1,6 @@
 import { IAppState, IPlayer } from "../interfaces";
 
+//set initial state
 const initialState: IAppState = {
   players: {
     players: new Array<IPlayer>(),

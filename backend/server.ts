@@ -2,11 +2,10 @@ import express, { Application } from 'express';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import path from 'path';
-//import 'dotenv/config';
-//import express, {Application, Request, Response, NextFunction} from 'express';
 
 const players = require('./routes/api/players')
 
+//init Application
 const app : Application = express();
 
 // Bodyparser Middleware
@@ -26,14 +25,6 @@ app.use('/api/players', players)
 const port = process.env.PORT || 8080
 app.listen(port, () => console.log(`App is listening on port ${port}`));
 
-/*
-app.use(express.static(path.join(__dirname, '../client/build')));
-
-app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, '../client/build/index.html'));
-});
-
-*/
 
 
 

@@ -14,7 +14,8 @@ import { Audio } from "./Audio";
 
 export default function AppNavbar() {
   const [isOpen, setIsOpen] = useState(false);
-
+  
+  //toggles the navbar (is open or not)
   const toggle = () => {
     setIsOpen(!isOpen);
   };
@@ -28,7 +29,6 @@ export default function AppNavbar() {
           <NavbarBrand href="/" className="navbartext">
             FH
           </NavbarBrand>
-          {/* <Audio /> */}
           <NavbarToggler onClick={toggle} />
           <Collapse isOpen={isOpen} navbar>
             <Nav className="ml-auto" navbar>

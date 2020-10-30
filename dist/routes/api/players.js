@@ -76,6 +76,7 @@ router.get("/", (_req, res) => {
             .then((players) => res.json(players));
     }
 });
+//update score on player in database
 router.put("/:id", (req, res) => {
     console.log("put");
     console.log("id = " + req.params.id);

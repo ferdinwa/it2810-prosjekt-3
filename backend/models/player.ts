@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
-//Create Schema
+//Create Schema for Player
 const PlayerSchema = new Schema({
     name: {
         type: String,

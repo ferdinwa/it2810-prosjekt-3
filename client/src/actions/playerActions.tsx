@@ -1,6 +1,7 @@
 import axios from "axios";
 import { GET_PLAYERS, PLAYERS_LOADING } from "../actions/types";
 
+//method to get players from database, and set the payload to this list
 export const getPlayers = (
   query: string,
   position: string,

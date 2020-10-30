@@ -11,17 +11,19 @@ const SearchBar = () => {
   const [name, setName] = useState("");
   const dispatch = useDispatch();
 
+  //set local state name to whatever the user is typing in the searchbar
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setName(e.currentTarget.value);
   };
 
+  //on submit, get players from database and set global state query
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    console.log("Handled");
     e.preventDefault();
     getPlayers(name, pos, nat, clu, ag, scor, dispatch, 10, 0);
     setQuery(name);
   };
 
+  //get global state variables
   const pos = useSelector((state: IAppState) => state.position);
   const nat = useSelector((state: IAppState) => state.nation);
   const clu = useSelector((state: IAppState) => state.club);

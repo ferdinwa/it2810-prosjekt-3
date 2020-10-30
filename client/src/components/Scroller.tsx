@@ -21,6 +21,7 @@ const Scroller = () => {
   const [id, setId] = useState("");
   const dispatch = useDispatch();
 
+  //get global state variables
   const players = useSelector((state: IAppState) => state.players);
   const pos = useSelector((state: IAppState) => state.position);
   const nat = useSelector((state: IAppState) => state.nation);
@@ -31,6 +32,7 @@ const Scroller = () => {
 
   const limit = 10;
 
+  //method to toggle the modal / show information about the chosen player
   const toggle = (
     playername: string,
     playerage: string,
@@ -52,27 +54,31 @@ const Scroller = () => {
     setModal(!modal);
   };
 
+  //show/not show the modal
   const toggleModal = () => {
     setModal(!modal);
   };
 
+  //to get the "next" players from the database on "next page" click
   const nextPage = () => {
     setSkip(skip + limit);
   };
 
+  //to get the "previous" players from the database on "previous page" click
   const previousPage = () => {
     skip === 0 ? setSkip(0) : setSkip(skip - limit);
   };
 
+  //update the score on buttonclick
   const changeScore = (inputScore: number) => {
     let updatedScore = score + inputScore;
     setScore(updatedScore);
-    console.log(score);
     axios.put("/api/players/" + id, { score: updatedScore }).then((res) => {
       console.log("PLAYERS", res);
     });
   };
 
+  //get players every time query, skip or limit changes
   const isFirstRun = useRef(true);
   useEffect(() => {
     if (isFirstRun.current) {

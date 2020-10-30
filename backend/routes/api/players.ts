@@ -77,6 +77,7 @@ router.get("/", (_req: Request, res: Response) => {
   }
 });
 
+//update score on player in database
 router.put("/:id", (req: Request, res: Response) => {
   console.log("put");
   console.log("id = " + req.params.id);

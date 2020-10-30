@@ -28,7 +28,6 @@ export interface IAction {
 
 export interface IScroller {
   players: IPlayer[];
-  //getPlayers: (query: string) => void
 }
 
 export interface ISearchBar {
