@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test AppNavbar 1`] = `
+<div>
+  <nav
+    className="navbar navbar navbar-expand-sm navbar-dark bg-dark"
+  >
+    <div
+      className="container"
+    >
+      <a
+        className="navbartext navbar-brand"
+        href="/"
+      >
+        FH
+      </a>
+      <button
+        aria-label="Toggle navigation"
+        className="navbar-toggler"
+        onClick={[Function]}
+        type="button"
+      >
+        <span
+          className="navbar-toggler-icon"
+        />
+      </button>
+      <div
+        className="collapse navbar-collapse"
+        style={Object {}}
+      >
+        <ul
+          className="ml-auto navbar-nav"
+        >
+          <li
+            className="nav-item"
+          >
+            <a
+              className="nav-link"
+              href="https://www.youtube.com/watch?v=ZJHUn8cV13w"
+              onClick={[Function]}
+            >
+              <img
+                alt=""
+                className="img"
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/FIFA_21_logo.svg/1200px-FIFA_21_logo.svg.png"
+              />
+               
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>
+`;

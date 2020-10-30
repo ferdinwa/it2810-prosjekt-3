@@ -1,0 +1,45 @@
+{
+  "name": "prosjekt-3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./dist/server.js",
+  "scripts": {
+    "test": "ts-node .backend/server.ts",
+    "start": "tsc && nodemon ./dist/server.js",
+    "server": "tsc && nodemon ./dist/server.js",
+    "client": "cd client && npm start",
+    "testing": "concurrently \"npm run dev\" \"npm run cypress:open\"",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "cypress:open": "cypress open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.stud.idi.ntnu.no/it2810-h20/team-77/prosjekt-3.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@material-ui/icons": "^4.9.1",
+    "@types/express": "^4.17.8",
+    "@types/jest": "^26.0.15",
+    "@types/mongoose": "^5.7.36",
+    "@types/react-select": "^3.0.22",
+    "body-parser": "^1.19.0",
+    "concurrently": "^5.3.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.10.8",
+    "nodemon": "^2.0.6",
+    "react-slider": "^1.0.11",
+    "rsuite": "^4.8.4"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^11.1.0",
+    "@types/node": "^14.11.8",
+    "cypress": "^5.5.0",
+    "nodemon": "^2.0.6",
+    "redux-devtools-extension": "^2.13.8",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.3"
+  }
+}

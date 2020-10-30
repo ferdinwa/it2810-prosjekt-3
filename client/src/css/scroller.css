@@ -1,0 +1,31 @@
+.playerbutton {
+  margin-top: 10px;
+  width: 60%;
+  text-align: center;
+  margin-left: 20%;
+}
+
+.prevnext {
+  width: 37.3%;
+  text-align: center;
+}
+
+.buttons {
+  margin-left: 20%;
+}
+
+#disable {
+  cursor: not-allowed;
+}
+
+.picture {
+  background-image: url("img/fifabackground.jpg");
+  background-size: cover;
+}
+
+.modalcontainer {
+  display: grid;
+  grid-template-columns: 30% 60%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
