@@ -143,6 +143,9 @@ Til dette brukte vi cypress, som gjør det enkelt å automatisere end-to-end tes
 Filen testing.ts i cypress-folderen inneholder disse testene. Her er det implementert tester for å sjekke at søk fungerer som det skal, både ved gyldig og ugyldige søkeord. 
 I tillegg har vi tester for filtrering og sortering, og for å undersøke at pagineringen fungerer som den skal. Grunnen til at vi valgte å bruke cypress, er at det er lett å sette opp/lære seg, og at det er enkelt å debugge eventuelle feil. 
 
+**Cross-browser testing** <br>
+Vi har testet nettsiden i både Chrome og Safari og alt av funksjonalitet fungerer som det skal.
+
 For å kjøre testene selv må man først og fremst ha kjørt `npm install` i både “prosjekt-3”-mappen, og i "client"-mappen. Deretter kan man kjøre testene med `npm run testing` fra “prosjekt-3”-mappen. Da vil det åpnes et eget cypress-vindu, og ved å deretter velge testing.ts, fra tests-folderen vil testene kjøre automatisk. 
 
 Følgende bilder viser henholdsvis enhetstestene, og end-2-end-testene etter kjøring:
